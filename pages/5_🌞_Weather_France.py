@@ -14,7 +14,7 @@ Weather = Weather[["NUM_POSTE", "NOM_USUEL", "LAT", "LON", "ALTI", "AAAAMM", "RR
 Weather['NBJ_Pluie'] = Weather['NBJRR1'] + Weather['NBJRR5']  + Weather['NBJRR10'] + Weather['NBJRR30'] + Weather['NBJRR50']
 Weather=Weather.rename(columns={"AAAAMM": "week", "RR": "Cumul_precipitation" ,"TX": "Temperature_max_AVG" , " TN": "Temperature_min_AVG"})
 Weather =Weather.drop(columns=['NBJRR1', 'NBJRR5','NBJRR10','NBJRR30','NBJRR50'])
-Weather['week'] = str(Weather['week'])
+Weather['week'] = Weather['week'].astype(str)
 
 
 #Show data
