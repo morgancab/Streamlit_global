@@ -39,7 +39,7 @@ hist_values = np.histogram(
     data[DATE_COLUMN].dt.hour, bins=24, range=(0,12))[0]
 st.bar_chart(hist_values)
 
-#Diagram bar
+#Maps
 hour_to_filter = st.sidebar.slider('hour', 0, 23, (0, 23), 1) 
 filtered_data = data[(data[DATE_COLUMN].dt.hour > hour_to_filter[0]) & (data[DATE_COLUMN].dt.hour < hour_to_filter[1])]
 st.subheader(f'Map of all pickups between {hour_to_filter[0]}:00 and {hour_to_filter[1]}:59')

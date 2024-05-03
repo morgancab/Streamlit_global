@@ -5,7 +5,14 @@ import pandas as pd
 import numpy as np
 
 st.title('Weather France')
-
+st.write(
+    """Personal project that compare the weather historical for some cities in France. These records are coming from meteo.data.gouv.fr   
+      Basic climatological data - monthly
+Presentation
+Climatological data of all france stations since their opening, for all available parameters. The data underwent a climatological check.  
+      These data are available via this [link](https://meteo.data.gouv.fr/datasets/6569b3d7d193b4daf2b43edc).
+    """
+)
 st.sidebar.header("Weather France")
 
 ##Select data
@@ -23,6 +30,22 @@ if st.checkbox('Show raw data'):
     st.write(Weather)
 
 
+#selectbox selection for Y : Parameters
+Y = st.sidebar.selectbox(
+    "parameter",
+    ("NBJ_Pluie","Cumul_precipitation", "Temperature_max_AVG", "Temperature_min_AVG")
+)
+
+#multiselect box for cities 
+Cities = st.sidebar.multiselect(
+    "Select the city",
+    Weather['NOM_USUEL'].unique(),
+    default=Weather['NOM_USUEL'].unique())
+DF_weather = Weather.loc[Weather['NOM_USUEL'].isin(Cities)]
+
+
 #Curve diagram
-st.subheader('Number of pickups by hour')
-st.line_chart(Weather,x="week", y="Cumul_precipitation",color ="NOM_USUEL" )
+st.subheader( Y + ' per cities in France')
+st.line_chart(DF_weather,x="week", y=Y,color ="NOM_USUEL" )
+
+
