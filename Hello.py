@@ -22,7 +22,3 @@ st.markdown(
 """
 )
 
-column1, column2 ,column3 ,column4 ,column5 = st.sidebar.columns(5)
-column1.markdown("[![Linkedin](https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg)](https://www.linkedin.com/in/morgancab/?locale=en_US)")
-column2.markdown("[![Github](https://img.icons8.com/material-outlined/48/000000/github.png)](https://github.com/morgancab)")
-                       
