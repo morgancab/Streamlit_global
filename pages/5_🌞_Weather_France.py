@@ -4,7 +4,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-
 st.title('Weather France')
 
 st.sidebar.header("Weather France")
@@ -15,7 +14,7 @@ Weather = Weather[["NUM_POSTE", "NOM_USUEL", "LAT", "LON", "ALTI", "AAAAMM", "RR
 Weather['NBJ_Pluie'] = Weather['NBJRR1'] + Weather['NBJRR5']  + Weather['NBJRR10'] + Weather['NBJRR30'] + Weather['NBJRR50']
 Weather=Weather.rename(columns={"AAAAMM": "week", "RR": "Cumul_precipitation" ,"TX": "Temperature_max_AVG" , " TN": "Temperature_min_AVG"})
 Weather =Weather.drop(columns=['NBJRR1', 'NBJRR5','NBJRR10','NBJRR30','NBJRR50'])
-Weather['NOM_USUEL'] = str(Weather['NOM_USUEL'])
+Weather['week'] = str(Weather['week'])
 
 
 #Show data
