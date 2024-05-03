@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Morgan Stremlit",
+    page_title="Morgan Streamlit",
     page_icon="👋",
 )
 
@@ -11,7 +11,7 @@ st.sidebar.success("Select a demo above.")
 
 st.markdown(
     """
-    This platform is a demonstration of the skills I learnt with the Stremlit Library 
+    This platform is a demonstration of the skills I learnt with the Streamlit Library 
 
     **👈 Select a demo from the sidebar** to see some examples
     of the Streamlit tool I have created!
