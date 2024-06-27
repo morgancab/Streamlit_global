@@ -15,14 +15,13 @@ st.write(
     """
 )
 
-st.write(
-    """Response from the API : 
-    """
-)
 
 ## Collect data
 response = requests.get("https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets/etat-des-stations-le-velo-star-en-temps-reel/records?limit=20&timezone=europe%2FParis") 
-st.write(response)
+st.write(
+    'Response from the API : ', response
+)
+
 Dump_data = json.dumps(response.json())
 Loads_data = json.loads(Dump_data)  
 DF_bike_station = pd.json_normalize(Loads_data['results'])
@@ -36,7 +35,10 @@ DF_bike_station=DF_bike_station.rename(columns={"nom": "Name" ,
                                                 "coordonnees.lon": "LON",
                                                 "coordonnees.lat": "LAT" })
 
-                                
+st.write(
+    'API refreshed at : ', DF_bike_station['lastupdate'].max()
+)
+
 #Show data
 if st.checkbox('Show raw data'):
     st.subheader('Raw data')
